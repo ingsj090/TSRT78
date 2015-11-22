@@ -76,7 +76,7 @@ dist=1-abs(pole_w);
 
 %% 4.2.5 Spectrum
 % Spectrum of the whistle, non-parametric
-% Section 4.2 gives:
+% Section 4.2 gice
 plot(w, abs(SIG));
 hold on
 
