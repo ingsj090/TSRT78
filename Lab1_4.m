@@ -81,3 +81,5 @@ plot(w, abs(SIG));
 hold on
 
 % Spectrum of the whistle, parametric
+pyulear(sig,2,[],fSamp); 
+% OBS OBS FIXA FIXA
