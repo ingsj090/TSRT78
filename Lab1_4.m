@@ -26,6 +26,7 @@ SIG=fft(sig);           %DFT of the signal
 w=(0:N-1)'/(N*T);
 
 %Finding dominant frequency
+figure(2)
 plot(w, abs(SIG));
 
 %% 4.2.1 Calculation of energies in time domain
@@ -65,6 +66,7 @@ lossval(1)=1/Nv*sum(pe(val,ar1).^2);
 lossval(2)=1/Nv*sum(pe(val,ar2).^2);
 lossval(3)=1/Nv*sum(pe(val,ar3).^2);
 
+figure(3)
 plot(1:3,lossest, '-', 1:3, lossval, '--');
 
 
@@ -77,9 +79,9 @@ dist=1-abs(pole_w);
 %% 4.2.5 Spectrum
 % Spectrum of the whistle, non-parametric
 % Section 4.2 gives:
-plot(w, abs(SIG));
-hold on
+figure(4)
+plot(w, 10*log(abs(T*SIG).^2));
 
 % Spectrum of the whistle, parametric
-pyulear(sig,2,[],fSamp); 
-% OBS OBS FIXA FIXA
+figure(5)
+pyulear(sig, 10,[], fSamp); 
