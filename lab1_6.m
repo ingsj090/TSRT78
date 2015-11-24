@@ -36,21 +36,28 @@ for i=1:rows
    detr=detrend(segments(i,:));
    
    % model each segment with AR(8) 
-   mod=ar(detr,8);
+   mod=ar(detr,18);             % Found AR(18) gave best result
    
    % Pulse train 
    e=filter(mod.a,1,detr);
    r=covf(e',100);
    [A,D]=max(r(19:end));
    ehat=zeros(columns,1);
-   ehat(1:D:end)=sqrt(A);
+   ehat(1:D:end)=20*sqrt(A);   % times 20 gives better result
+   
+   % Test amplitude = 1 for all segments
+   ehat1=zeros(columns,1);
+   ehat1(1:D:end)=1;
    
    % Dealing with unstable poles
    b=fstab(mod.a,1/fSamp);
    
    yhat=filter(1,b,ehat');
+   yhat1=filter(1,b,ehat1');
+   
    
    phrase_2 = [phrase_2 yhat];
+   phrase_3 = [phrase_2 yhat1];
 end
   
 sound(phrase_2)
