@@ -12,8 +12,8 @@ t = (0:nSamp-1)/fSamp; % time vector in seconds
 
 figure(1);
 plot(t, y)                  % Plot of signal
-xlabel('time in seconds')
-ylabel('recorded signal')
+title('Recorded whistling');
+xlabel('Time in seconds [s]');
 
 %% 4.2 implement and present
 % Extraction of the two seconds with best quality
@@ -28,7 +28,8 @@ w=(0:N-1)'/(N*T);
 %Finding dominant frequency
 figure(2)
 plot(w, abs(SIG));
-
+title('Transformed signal');
+xlabel('Frequency, [Hz]');
 %% 4.2.1 Calculation of energies in time domain
 [b,a]=butter(2, [1190*2*T, 1220*2*T]);  %butterworth filter of order 2
                                         %to select the dominant frequency
@@ -68,10 +69,11 @@ lossval(3)=1/Nv*sum(pe(val,ar3).^2);
 
 figure(3)
 plot(1:3,lossest, '-', 1:3, lossval, '--');
+title('Prediction error variance versus model order');
+xlabel('n')
 
-
-% Purity measure using poles and distance :P
-
+% Purity estimate based on AR(2)-model
+figure(4)
 pzmap(ar2)
 pole_w=roots(ar2.a);
 dist=1-abs(pole_w);
@@ -79,13 +81,13 @@ dist=1-abs(pole_w);
 %% 4.2.5 Spectrum
 % Spectrum of the whistle, non-parametric
 % Section 4.2 gives:
-figure(4)
+figure(5)
 plot(w, 10*log(abs(T*SIG).^2));
 title ('Estimated spectrum, non-parametric method')
-xlabel('Frequency '); ylabel('Absolut value of transformed signal, squared')
+xlabel('Frequency, [Hz] '); ylabel('Absolut value of FFT o, squared')
 
 % Spectrum of the whistle, parametric
-figure(5)
+figure(6)
 pyulear(sig, 10,[], fSamp); 
 title ('Estimated spectrum, parametric method')
 xlabel('Frequency in log scale')

@@ -1,3 +1,4 @@
+close all; clear all; clc
 %% Load sound file 
 [y, fSamp] = audioread('livetssymfoni.wav'); % extract data and sampling frequency
 
@@ -28,7 +29,7 @@ w=(0:N-1)'/(N*T);
 %Finding dominant frequency
 figure(2)
 plot(w, abs(SIG));
-title('Transformed signal');
+title('FFT of the signal');
 xlabel('Frequency, [Hz]');
 %% 4.2.1 Calculation of energies in time domain
 [b,a]=butter(2, [1190*2*T, 1220*2*T]);  %butterworth filter of order 2
@@ -84,7 +85,7 @@ dist=1-abs(pole_w);
 figure(5)
 plot(w, 10*log(abs(T*SIG).^2));
 title ('Estimated spectrum, non-parametric method')
-xlabel('Frequency, [Hz] '); ylabel('Absolut value of transformed signal, squared')
+xlabel('Frequency, [Hz] '); ylabel('Absolut value of FFT of the signal, squared')
 
 % Spectrum of the whistle, parametric
 figure(6)
