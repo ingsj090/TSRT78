@@ -104,6 +104,7 @@ compare(o_val,o_ar2, 1);
 compare(o_val,o_ar4, 1);
 compare(o_val,o_ar6, 1);        %% BEST! 
 compare(o_val,o_ar8, 1);
+compare(o_val,o_ar10,1);
 compare(o_val,o_ar20, 1);
  
 %define pulse train
