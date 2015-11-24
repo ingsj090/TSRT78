@@ -53,23 +53,21 @@ n_vala = length(a_val);
 
 %OBS OBS FIXA FIXA SAMMA SAMMA
 
-% 5.2.3 Simulate
+%% 5.2.3 Simulate
 %define pulse train
 
-Da = 45;%1/a_base*length(a_est);
+Da = 25; %1/a_base*length(a_est);
 a_cov=sum(diag(getcov(a_ar10)));
 pulset=zeros(size(a_val));
-pulset(1:Da:end)=1;
+pulset(1:D:end)=1;
 
 sim_a=filter(1,a_ar10.a,a_cov*pulset);
-%plot(sim_a)
+plot(sim_a)
 sound(sim_a)
 
-figure(7)
-loglog(fSampa*(0:n_vala-1)/n_vala, abs(fft(a_val))); hold on;
-loglog(fSampa*(0:n_vala-1)/n_vala, 10*abs(fft(sim_a)));
-hold off;
-title('Validation of model, vowel A')
+figure(3)
+loglog(fSampo*(0:n_vala-1)/n_vala, abs(fft(a_val))); hold on;
+loglog(fSampo*(0:n_vala-1)/n_vala, abs(fft(sim_a)));
 
 %% O
 % Loading O
@@ -114,6 +112,7 @@ plot(w,abs(O));  % Real spectrum
 
 o_base=336;   %ocular inpection of spectrum
 
+hold on
 %OBS OBS FIXA FIXA SAMMA SAMMA
 
 %% 5.2.3 Simulate
@@ -129,5 +128,4 @@ n_val0 = length(o_val);
 figure(4)
 loglog(fSampo*(0:n_val0-1)/n_val0, abs(fft(o_val))); hold on;
 loglog(fSampo*(0:n_val0-1)/n_val0, abs(fft(sim_o)));
-hold off;
-title('Validation of model, vowel O')
+
