@@ -70,7 +70,7 @@ lossval(3)=1/Nv*sum(pe(val,ar3).^2);
 
 figure(3)
 plot(1:3,lossest, '-', 1:3, lossval, '--');
-title('Prediction error variance versus model order');
+title('Prediction error variance versus model order', 'FontSize', 16);
 xlabel('n')
 
 % Purity estimate based on AR(2)-model
@@ -84,11 +84,11 @@ dist=1-abs(pole_w);
 % Section 4.2 gives:
 figure(5)
 plot(w, 10*log(abs(T*SIG).^2));
-title ('Estimated spectrum, non-parametric method')
+title ('Estimated spectrum, non-parametric method', 'FontSize', 16)
 xlabel('Frequency, [Hz] '); ylabel('Absolut value of FFT of the signal, squared')
 
 % Spectrum of the whistle, parametric
 figure(6)
 pyulear(sig, 10,[], fSamp); 
-title ('Estimated spectrum, parametric method')
+title ('Estimated spectrum, parametric method', 'FontSize', 16)
 xlabel('Frequency in log scale')
