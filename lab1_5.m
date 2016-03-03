@@ -11,7 +11,7 @@ nSamp_a = size(a,1);            % number of samples
 t_a = (0:nSamp_a-1)/fSampa;     % time vector in seconds
 
 figure(1);
-plot(t_a,a); title('Recording, A')                     % plot signal
+plot(t_a,a); title('Recording, A', 'FontSize', 16)                     % plot signal
 xlabel('Time in seconds [s]')
 axis tight
 
